@@ -4,7 +4,7 @@ from Player_Stats import Player
 Terrance = Enemies.Enemy('Terrance', 2, 5)
 Frank = Enemies.Enemy('Frank', 1, 9)
 Steve = Enemies.Enemy('Steve', 6, 5)
-Big_Fred = Enemies.Enemy('Big_Fred', 0.1, 100)
+Big_Fred = Enemies.Enemy('Big_Fred', 0.05, 100)
 def combat():
     if Map.row == 0 and Map.col == 0:
         while Player.health and Terrance.health > 0:
@@ -93,7 +93,8 @@ def combat():
                 else:
                     print("I didn't understand that")
                     combat()
-                print("The alien swings and deals 0.1 damage to you\n")
+                print("The alien swings and deals 0.05 damage to you\n")
+                print("It's clear this alien doesn't wish to hurt you yet you continue your attack")
                 Player.health -= Big_Fred.attack
                 if Player.health == 0:
                     print("You have died\nYou lose")
