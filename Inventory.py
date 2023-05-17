@@ -1,4 +1,3 @@
-
 #Empty nested lists for inventory
 inventory =  [[], []]
 #Variable that detects if you have the keys or not

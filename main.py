@@ -5,8 +5,6 @@
 import Map
 import Tiles
 
-#This function detects if you are on the end tile with the keys, thus winning the game
-
 #Introduction to situation
 print(f"{Map.Tile_Descriptions[Map.layout[Map.row][Map.col]]['Description']}\n")
 #This will loop the code until they win the game or quit
