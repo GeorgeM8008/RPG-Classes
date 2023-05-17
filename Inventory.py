@@ -1,6 +1,6 @@
 
-#Empty list for inventory
-inventory = []
+#Empty nested lists for inventory
+inventory =  [[], []]
 #Variable that detects if you have the keys or not
 Keys = False
 #Nested dictionaries for all of the items in the different rooms
@@ -16,4 +16,3 @@ items = {
     "Janitor Closet" : {
         "Item" : "Keys" }
     } 
-#This function detects if you are in a room with an item and gives the choice to pick it up

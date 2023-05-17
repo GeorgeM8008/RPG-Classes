@@ -1,7 +1,10 @@
 import Inventory
-import Combat
+import Player_Stats
+import Map
+#These variables are the players beginning position
 row = 3
 col = 0
+#This loop stays trye while the player is still playing the game
 Loop = True
 #Lists containing layout of the different rooms in the map
 layout = [['Enemy Room', 'Supply Room', 'Safe Room', 'Escape Pod'],
@@ -29,8 +32,8 @@ Tile_Descriptions = {
         "Effect" : "Do you choose to pick it up?",
     }
 }
-#This function moves the player around based on their input
-#This function also detects if a player is trying to go out of bounds and prevents them
+'''This function moves the player around based on their input
+and also prevents them from going out of bounds. If the player chooses to quit then loop = false and the program stops. If they choose map then it will display the map of the game. If they choose inventory, then it will show them their current inventory divided into consumables and key items.'''
 def Move():
     global row, col, Loop, inventory, file
     print("Options for action:\nQuit, Move, Inventory, Map\n")    
@@ -76,23 +79,33 @@ def Move():
             print("I didn't understand that\n")
 
     elif choice == "Inventory":
-        if len(Inventory.inventory) == 0:
-            print("\nYour inventory is empty\n")
+        if len(Inventory.inventory[0]) == 0:
+            print("Consumables:")
+            print("-None\n")
         else:
-            for item in Inventory.inventory:
-                print(f"\n-{item}\n")
-            choiceI = input("Would you like to use anything?")
-            if choiceI == "Medkit":
-                print("You used the medkit on yourself")
-                Combat.combat_stats['Player']['Health'] = 20
-                Inventory.inventory.remove("Medkit")
-            elif choiceI == "Keys":
-                print("You have nothing to use those on")
-            elif choiceI == "No":
-                print("You didn't use anything")
-                Move()
-            else:
-                print("I didn't understand that")
+            for item in Inventory.inventory[0]:
+                print("Consumables:")
+                print(f"-{item}\n")
+        if len(Inventory.inventory[1]) == 0:
+            print("Key Items:")
+            print("-None\n")
+            Map.Move()
+        else:
+            for item in Inventory.inventory[1]:
+                print("Key iems:")
+                print(f"-{item}\n")
+        choiceI = input("Would you like to use anything?\n")
+        if choiceI == "Medkit":
+            print("\nYou used the medkit on yourself\n")
+            Player_Stats.Player1.health = 20
+            Inventory.inventory[0].remove("Medkit")
+        elif choiceI == "Keys":
+            print("You have nothing to use those on")
+        elif choiceI == "No":
+            print("\nYou didn't use anything\n")
+            Move()
+        else:
+            print("I didn't understand that")
     elif choice == "Map":
         with open('map.txt') as file:
             contents = file.read()

@@ -3,7 +3,6 @@
 
 #Imports for all the different files used
 import Map
-import Combat
 import Tiles
 
 #This function detects if you are on the end tile with the keys, thus winning the game
@@ -14,6 +13,8 @@ print(f"{Map.Tile_Descriptions[Map.layout[Map.row][Map.col]]['Description']}\n")
 while Map.Loop == True:
    Tiles.Closet.Get_Key()
    Tiles.Supply_Room.Get_Medkit()
-   Combat.combat()
+   Tiles.Enemy_Tile.Combat1()
    Map.Move()
-   Tiles.End.Win()
+   print(Map.row)
+   print(Map.col)
+   Tiles.End_Tile.Win()
