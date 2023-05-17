@@ -1,3 +1,4 @@
+#Class containing the attack and health stats of the player character
 class Player:
     def __init__(self, attack, health):
         self.attack = attack
